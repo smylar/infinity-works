@@ -1,0 +1,38 @@
+<div class="ratingsContent">
+  <label>Authorities:
+    <select (ngModelChange)="setAuthority($event)" [(ngModel)]="selectedAuthority">
+        <option *ngFor="let auth of authorities" [ngValue]="auth">
+            {{auth.Name}}
+        </option>
+    </select>
+  </label>
+  <br/>
+  <div *ngIf="ratings$ | async; let r; else pleaseSelect" [ngClass]="{'hidden': loading}">
+  <table *ngIf="r.count > 0; else noData" id="ratingsTable">
+    <tr><th>Rating</th><th>Percentage</th></tr>
+    <tr *ngFor="let group of r.ratings | keyvalue : preserveOrder">
+        <td>{{group.key}}</td>
+        <td>{{group.value | asPercentageOf : r.count | number : '1.0-2'}}%</td>
+    </tr>
+  </table>
+  <br/>
+  <i>*N.B. Percentages rounded to 2 decimal places and may not add up exactly to 100%</i>
+  </div>
+  <div *ngIf="loading">
+	  <div class="loader"></div>
+	  Please wait while ratings are retrieved
+  </div>
+  
+  <ng-template #pleaseSelect>
+    <div *ngIf="!selectedAuthority">
+    Please select an Authority
+    </div>
+  </ng-template>
+  
+  <ng-template #noData>
+    <div>
+    No data to display
+    </div>
+  </ng-template>
+  
+</div>

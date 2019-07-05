@@ -1,0 +1,56 @@
+.hidden {
+    display: none;
+}
+
+.ratingsContent div {
+    margin-top: 1em;
+}
+
+table {
+  border-collapse: collapse;
+}
+
+table, th, td {
+  border: 1px solid black;
+}
+
+th, td {
+    padding: 4pt;
+}
+
+th {
+    color: white;
+    background-color: #093
+}
+
+select {
+    font-size: 14px;
+    padding: 0.4em;
+    border-radius: 0.5em;
+    background-color: #efe;
+}
+
+select:hover {
+    border-color: #093;
+}
+
+select:focus {
+    border-color: #093;
+    outline: none;
+    box-shadow: 0 0 1px 3px rgba(0, 153, 51, 0.6);
+}
+
+.loader {
+  display: inline-block;
+  border: 10px solid #dfd;
+  border-top: 10px solid #093;
+  border-radius: 50%;
+  width: 20px;
+  height: 20px;
+  animation: spin 1.5s linear infinite;
+}
+
+@keyframes spin {
+  0% { transform: rotate(0deg); }
+  100% { transform: rotate(360deg); }
+}
